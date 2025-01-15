@@ -40,11 +40,23 @@ func (tl *TaskList) All() {
 func (tl *TaskList) AllDone() {
 	for _, task := range tl.tasks {
 		if task.status == enums.Done {
-			fmt.Printf("id: %v\n"+
-				"desctiption: %s\n"+
-				"status: %s\n"+
-				"created at: %s\n\n\n",
-				task.GetId(), task.GetDescription(), task.GetStatus().String(), task.GetCreatedAt())
+			fmt.Printf(task.String())
+		}
+	}
+}
+
+func (tl *TaskList) AllInProgress() {
+	for _, task := range tl.tasks {
+		if task.status == enums.InProgress {
+			fmt.Printf(task.String())
+		}
+	}
+}
+
+func (tl *TaskList) AllTodo() {
+	for _, task := range tl.tasks {
+		if task.status == enums.Todo {
+			fmt.Printf(task.String())
 		}
 	}
 }

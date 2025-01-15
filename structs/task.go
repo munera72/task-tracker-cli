@@ -1,6 +1,7 @@
 package structs
 
 import (
+	"fmt"
 	"task-tracker-cli/enums"
 	"time"
 )
@@ -55,4 +56,12 @@ func (t *Task) GetUpdatedAt() time.Time {
 
 func (t *Task) SetUpdatedAt(updatedAt time.Time) {
 	t.updatedAt = updatedAt
+}
+
+func (t Task) String() string {
+	return fmt.Sprintf("id: %v\n"+
+		"desctiption: %s\n"+
+		"status: %s\n"+
+		"created at: %s\n\n\n",
+		t.GetId(), t.GetDescription(), t.GetStatus().String(), t.GetCreatedAt())
 }
