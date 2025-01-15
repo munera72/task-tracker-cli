@@ -9,12 +9,14 @@ type TaskList struct {
 
 func NewTaskList() *TaskList {
 	return &TaskList{
-		1,
+		0,
 		make([]Task, 0, 10),
 	}
 }
 
 func (tl *TaskList) AddTask(task Task) {
+	tl.lastAddedId++
+	task.id = tl.lastAddedId
 	tl.tasks = append(tl.tasks, task)
 }
 

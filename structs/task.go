@@ -13,12 +13,46 @@ type Task struct {
 	updatedAt   time.Time
 }
 
-func NewTask(id int, description string, status enums.TaskState, createdAT, updatedAt time.Time) *Task {
+func NewTask(description string, status enums.TaskState, createdAt time.Time) *Task {
 	return &Task{
-		id,
-		description,
-		status,
-		createdAT,
-		updatedAt,
+		description: description,
+		status:      status,
+		createdAt:   createdAt,
 	}
+}
+
+func (t *Task) SetId(id int) {
+	t.id = id
+}
+
+func (t *Task) GetId() int {
+	return t.id
+}
+
+func (t *Task) SetDescription(d string) {
+	t.description = d
+}
+
+func (t *Task) GetDescription() string {
+	return t.description
+}
+
+func (t *Task) GetStatus() enums.TaskState {
+	return t.status
+}
+
+func (t *Task) SetStatus(newStatus enums.TaskState) {
+	t.status = newStatus
+}
+
+func (t *Task) GetCreatedAt() time.Time {
+	return t.createdAt
+}
+
+func (t *Task) GetUpdatedAt() time.Time {
+	return t.updatedAt
+}
+
+func (t *Task) SetUpdatedAt(updatedAt time.Time) {
+	t.updatedAt = updatedAt
 }
