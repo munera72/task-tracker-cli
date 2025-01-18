@@ -49,26 +49,10 @@ func (tl TaskList) All() {
 	}
 }
 
-func (tl TaskList) AllDone() {
+func (tl TaskList) FilterByState(state enums.TaskState) {
 	for _, task := range tl.tasks {
-		if task.status == enums.Done {
-			fmt.Print(task)
-		}
-	}
-}
-
-func (tl TaskList) AllInProgress() {
-	for _, task := range tl.tasks {
-		if task.status == enums.InProgress {
-			fmt.Print(task)
-		}
-	}
-}
-
-func (tl *TaskList) AllTodo() {
-	for _, task := range tl.tasks {
-		if task.status == enums.Todo {
-			fmt.Print(task)
+		if task.status == state {
+			fmt.Printf("%v\n", task)
 		}
 	}
 }
