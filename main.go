@@ -16,6 +16,7 @@ func main() {
 	myTaskList.UpdateTaskDescription(1, "Hel")
 	myTaskList.UpdateTaskStatus(1, enums.InProgress)
 
-	myTaskList.FilterByState(enums.InProgress)
+	myTaskList.DeleteTask(1)
+	myTaskList.All()
 
 }
