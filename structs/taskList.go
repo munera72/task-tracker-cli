@@ -6,8 +6,7 @@ import (
 )
 
 type TaskList struct {
-	lastAddedId int
-	tasks       []Task
+	tasks []Task
 }
 
 func NewTaskList() *TaskList {
@@ -16,10 +15,6 @@ func NewTaskList() *TaskList {
 
 func (tl *TaskList) AddTask(task Task) {
 	tl.tasks = append(tl.tasks, task)
-}
-
-func (tl TaskList) LastAddedId() int {
-	return tl.lastAddedId
 }
 
 func (tl *TaskList) FindTask(id int) (int, *Task) {
