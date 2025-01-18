@@ -8,15 +8,14 @@ import (
 
 func main() {
 	myTaskList := structs.NewTaskList()
-	myTask1 := structs.NewTask("...", enums.Todo, time.Now())
-	myTask2 := structs.NewTask("Hello wor ", enums.InProgress, time.Now())
-	myTask3 := structs.NewTask("Hello world :p", enums.Done, time.Now())
 
-	myTaskList.AddTask(*myTask1)
-	myTaskList.AddTask(*myTask2)
-	myTaskList.AddTask(*myTask3)
+	myTaskList.AddTask(*structs.NewTask("...", enums.Todo, time.Now()))
+	myTaskList.AddTask(*structs.NewTask("Hello wor ", enums.InProgress, time.Now()))
+	myTaskList.AddTask(*structs.NewTask("Hello world :p", enums.Done, time.Now()))
 
-	myTaskList.AllDone()
+	myTaskList.UpdateTaskDescription(1, "Hel")
+	myTaskList.UpdateTaskStatus(1, enums.InProgress)
+
 	myTaskList.All()
 
 }

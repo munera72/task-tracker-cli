@@ -11,44 +11,56 @@ type TaskList struct {
 }
 
 func NewTaskList() *TaskList {
-	return &TaskList{
-		0,
-		make([]Task, 0, 10),
-	}
+	return &TaskList{}
 }
 
 func (tl *TaskList) AddTask(task Task) {
-	tl.lastAddedId++
-	task.id = tl.lastAddedId
 	tl.tasks = append(tl.tasks, task)
 }
 
-func (tl *TaskList) GetLastAddedId() int {
+func (tl TaskList) LastAddedId() int {
 	return tl.lastAddedId
 }
 
-func (tl *TaskList) All() {
+func (tl *TaskList) FindTask(id int) *Task {
+	var taskPtr *Task
+	for i := range tl.tasks {
+		if tl.tasks[i].Id() == id {
+			taskPtr = &(tl.tasks[i])
+			break
+		}
+	}
+	return taskPtr
+}
+
+func (tl *TaskList) UpdateTaskDescription(id int, desc string) {
+	task := tl.FindTask(id)
+	(*task).SetDescription(desc)
+}
+
+func (tl *TaskList) UpdateTaskStatus(id int, st enums.TaskState) {
+	task := tl.FindTask(id)
+	(*task).SetStatus(st)
+}
+
+func (tl TaskList) All() {
 	for _, task := range tl.tasks {
-		fmt.Printf("id: %v\n"+
-			"desctiption: %s\n"+
-			"status: %s\n"+
-			"created at: %s\n\n\n",
-			task.GetId(), task.GetDescription(), task.GetStatus().String(), task.GetCreatedAt())
+		fmt.Printf("%v\n", task)
 	}
 }
 
-func (tl *TaskList) AllDone() {
+func (tl TaskList) AllDone() {
 	for _, task := range tl.tasks {
 		if task.status == enums.Done {
-			fmt.Printf(task.String())
+			fmt.Print(task)
 		}
 	}
 }
 
-func (tl *TaskList) AllInProgress() {
+func (tl TaskList) AllInProgress() {
 	for _, task := range tl.tasks {
 		if task.status == enums.InProgress {
-			fmt.Printf(task.String())
+			fmt.Print(task)
 		}
 	}
 }
@@ -56,7 +68,7 @@ func (tl *TaskList) AllInProgress() {
 func (tl *TaskList) AllTodo() {
 	for _, task := range tl.tasks {
 		if task.status == enums.Todo {
-			fmt.Printf(task.String())
+			fmt.Print(task)
 		}
 	}
 }
