@@ -30,33 +30,13 @@ func (t *Task) SetId(id int) {
 	t.Id = id
 }
 
-// func (t Task) Id() int {
-// 	return t.Id
-// }
-
 func (t *Task) SetDescription(d string) {
 	t.Description = d
 }
 
-// func (t Task) Description() string {
-// 	return t.description
-// }
-
-// func (t Task) Status() enums.TaskState {
-// 	return t.status
-// }
-
 func (t *Task) SetStatus(newStatus enums.TaskState) {
 	t.Status = newStatus
 }
-
-// func (t Task) CreatedAt() time.Time {
-// 	return t.createdAt
-// }
-
-// func (t Task) UpdatedAt() time.Time {
-// 	return t.updatedAt
-// }
 
 func (t *Task) SetUpdatedAt(updatedAt time.Time) {
 	t.UpdatedAt = updatedAt
