@@ -9,57 +9,57 @@ import (
 var currentIdCount int = 0
 
 type Task struct {
-	id          int
-	description string
-	status      enums.TaskState
-	createdAt   time.Time
-	updatedAt   time.Time
+	Id          int
+	Description string
+	Status      enums.TaskState
+	CreatedAt   time.Time
+	UpdatedAt   time.Time
 }
 
 func NewTask(description string, status enums.TaskState, createdAt time.Time) *Task {
 	currentIdCount++
 	return &Task{
-		id:          currentIdCount,
-		description: description,
-		status:      status,
-		createdAt:   createdAt,
+		Id:          currentIdCount,
+		Description: description,
+		Status:      status,
+		CreatedAt:   createdAt,
 	}
 }
 
 func (t *Task) SetId(id int) {
-	t.id = id
+	t.Id = id
 }
 
-func (t Task) Id() int {
-	return t.id
-}
+// func (t Task) Id() int {
+// 	return t.Id
+// }
 
 func (t *Task) SetDescription(d string) {
-	t.description = d
+	t.Description = d
 }
 
-func (t Task) Description() string {
-	return t.description
-}
+// func (t Task) Description() string {
+// 	return t.description
+// }
 
-func (t Task) Status() enums.TaskState {
-	return t.status
-}
+// func (t Task) Status() enums.TaskState {
+// 	return t.status
+// }
 
 func (t *Task) SetStatus(newStatus enums.TaskState) {
-	t.status = newStatus
+	t.Status = newStatus
 }
 
-func (t Task) CreatedAt() time.Time {
-	return t.createdAt
-}
+// func (t Task) CreatedAt() time.Time {
+// 	return t.createdAt
+// }
 
-func (t Task) UpdatedAt() time.Time {
-	return t.updatedAt
-}
+// func (t Task) UpdatedAt() time.Time {
+// 	return t.updatedAt
+// }
 
 func (t *Task) SetUpdatedAt(updatedAt time.Time) {
-	t.updatedAt = updatedAt
+	t.UpdatedAt = updatedAt
 }
 
 func (t Task) String() string {
@@ -67,5 +67,5 @@ func (t Task) String() string {
 		"desctiption: %s\n"+
 		"status: %s\n"+
 		"created at: %s\n\n\n",
-		t.Id(), t.Description(), t.Status().String(), t.CreatedAt())
+		t.Id, t.Description, t.Status.String(), t.CreatedAt)
 }

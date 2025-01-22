@@ -6,7 +6,7 @@ import (
 )
 
 type TaskList struct {
-	tasks []Task
+	Tasks []Task
 }
 
 func NewTaskList() *TaskList {
@@ -14,15 +14,15 @@ func NewTaskList() *TaskList {
 }
 
 func (tl *TaskList) AddTask(task Task) {
-	tl.tasks = append(tl.tasks, task)
+	tl.Tasks = append(tl.Tasks, task)
 }
 
 func (tl *TaskList) FindTask(id int) (int, *Task) {
 	var index int
 	var taskPtr *Task
-	for i := range tl.tasks {
-		if tl.tasks[i].Id() == id {
-			taskPtr = &(tl.tasks[i])
+	for i := range tl.Tasks {
+		if tl.Tasks[i].Id == id {
+			taskPtr = &(tl.Tasks[i])
 			index = i
 			break
 		}
@@ -41,14 +41,14 @@ func (tl *TaskList) UpdateTaskStatus(id int, st enums.TaskState) {
 }
 
 func (tl TaskList) All() {
-	for _, task := range tl.tasks {
+	for _, task := range tl.Tasks {
 		fmt.Printf("%v\n", task)
 	}
 }
 
 func (tl TaskList) FilterByState(state enums.TaskState) {
-	for _, task := range tl.tasks {
-		if task.status == state {
+	for _, task := range tl.Tasks {
+		if task.Status == state {
 			fmt.Printf("%v\n", task)
 		}
 	}
@@ -56,5 +56,5 @@ func (tl TaskList) FilterByState(state enums.TaskState) {
 
 func (tl *TaskList) DeleteTask(id int) {
 	i, _ := tl.FindTask(id)
-	tl.tasks = append(tl.tasks[:i], tl.tasks[i+1:]...)
+	tl.Tasks = append(tl.Tasks[:i], tl.Tasks[i+1:]...)
 }
