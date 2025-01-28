@@ -1,6 +1,8 @@
 package main
 
 import (
+	"encoding/json"
+	"os"
 	"task-tracker-cli/enums"
 	"task-tracker-cli/structs"
 	"time"
@@ -16,6 +18,30 @@ func main() {
 	myTaskList.UpdateTaskDescription(1, "Hel")
 	myTaskList.UpdateTaskStatus(1, enums.InProgress)
 
-	myTaskList.All()
+	//Create the json file
+	file, err := os.Create("tasks.json")
+	if err != nil {
+		panic(err)
+	}
+
+	//Create the encoder for the json to write in the file we just created
+	encoder := json.NewEncoder(file)
+	err = encoder.Encode(myTaskList)
+	if err != nil {
+		panic(err)
+	}
+
+	content, err := os.ReadFile("tasks.json")
+	if err != nil {
+		panic(err)
+	}
+
+	newTasksList := structs.NewTaskList()
+	err = json.Unmarshal(content, newTasksList)
+	if err != nil {
+		panic(err)
+	}
+
+	newTasksList.All()
 
 }
