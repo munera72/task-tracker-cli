@@ -9,11 +9,11 @@ import (
 var currentIdCount int = 0
 
 type Task struct {
-	Id          int
-	Description string
-	Status      enums.TaskState
-	CreatedAt   time.Time
-	UpdatedAt   time.Time
+	Id          int             `json:"id"`
+	Description string          `json:"description"`
+	Status      enums.TaskState `json:"status"`
+	CreatedAt   time.Time       `json:"createdAt"`
+	UpdatedAt   time.Time       `json:"updatedAt"`
 }
 
 func NewTask(description string, status enums.TaskState, createdAt time.Time) *Task {

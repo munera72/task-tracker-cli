@@ -6,7 +6,7 @@ import (
 )
 
 type TaskList struct {
-	Tasks []Task
+	Tasks []Task `json:"tasks"`
 }
 
 func NewTaskList() *TaskList {
