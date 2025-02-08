@@ -40,3 +40,7 @@ func WriteInPersistence(content any) {
 func ReadPersistence() ([]byte, error) {
 	return os.ReadFile(fileName)
 }
+
+func WipePersistenceContent() {
+	os.Truncate(fileName, 0)
+}
