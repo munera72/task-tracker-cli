@@ -15,9 +15,6 @@ func main() {
 	myTaskList.AddTask(*structs.NewTask("Hello wor ", enums.InProgress, time.Now()))
 	myTaskList.AddTask(*structs.NewTask("Hello world :p", enums.Done, time.Now()))
 
-	myTaskList.UpdateTaskDescription(1, "Hel")
-	myTaskList.UpdateTaskStatus(1, enums.InProgress)
-
 	//Create the json file
 	file, err := os.Create("tasks.json")
 	if err != nil {
@@ -31,6 +28,7 @@ func main() {
 		panic(err)
 	}
 
+	//Read the json file and put the content on a new taskList
 	content, err := os.ReadFile("tasks.json")
 	if err != nil {
 		panic(err)
