@@ -1,7 +1,6 @@
 package controller
 
 import (
-	"fmt"
 	"strconv"
 	"task-tracker-cli/enums"
 	"task-tracker-cli/service"
@@ -57,7 +56,7 @@ func addTask(desc string) {
 }
 
 func listTasks(status string) {
-	fmt.Print("listing tasks: " + status)
+	service.ListTasks(status)
 }
 
 func deleteTask(id int) {

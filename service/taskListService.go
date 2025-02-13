@@ -7,7 +7,7 @@ import (
 	"time"
 )
 
-var taskList structs.TaskList = *repo.ReadTaskList()
+var taskList structs.TaskList = repo.ReadTaskList()
 
 func ListTasks(status string) {
 	if status == "" {

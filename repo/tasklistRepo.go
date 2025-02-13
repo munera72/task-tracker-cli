@@ -15,8 +15,9 @@ func DeleteTaskList() {
 	persistence.WipePersistenceContent()
 }
 
-func ReadTaskList() (tl *structs.TaskList) {
+func ReadTaskList() structs.TaskList {
+	var tl structs.TaskList
 	content, _ := persistence.ReadPersistence()
-	json.Unmarshal(content, tl)
-	return
+	json.Unmarshal(content, &tl)
+	return tl
 }

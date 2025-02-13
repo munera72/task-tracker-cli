@@ -2,6 +2,7 @@ package persistence
 
 import (
 	"encoding/json"
+	"errors"
 	"os"
 )
 
@@ -10,7 +11,9 @@ var file *os.File
 var encoder *json.Encoder
 
 func SetUpPersistence() {
-	createPersistenceFile()
+	if _, err := os.Stat(fileName); errors.Is(err, os.ErrNotExist) {
+		createPersistenceFile()
+	}
 	createEncoder()
 }
 
