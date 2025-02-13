@@ -6,15 +6,16 @@ import (
 	"task-tracker-cli/structs"
 )
 
-func Save(tl structs.TaskList) {
+func SaveTaskList(tl structs.TaskList) {
+	persistence.WipePersistenceContent()
 	persistence.WriteInPersistence(tl)
 }
 
-func Delete() {
+func DeleteTaskList() {
 	persistence.WipePersistenceContent()
 }
 
-func Read() (tl *structs.TaskList) {
+func ReadTaskList() (tl *structs.TaskList) {
 	content, _ := persistence.ReadPersistence()
 	json.Unmarshal(content, tl)
 	return

@@ -3,6 +3,7 @@ package structs
 import (
 	"fmt"
 	"task-tracker-cli/enums"
+	"time"
 )
 
 type TaskList struct {
@@ -32,12 +33,14 @@ func (tl *TaskList) FindTask(id int) (int, *Task) {
 
 func (tl *TaskList) UpdateTaskDescription(id int, desc string) {
 	_, task := tl.FindTask(id)
-	(*task).SetDescription(desc)
+	task.SetDescription(desc)
+	task.SetUpdatedAt(time.Now())
 }
 
 func (tl *TaskList) UpdateTaskStatus(id int, st enums.TaskState) {
 	_, task := tl.FindTask(id)
-	(*task).SetStatus(st)
+	task.SetStatus(st)
+	task.SetUpdatedAt(time.Now())
 }
 
 func (tl TaskList) All() {

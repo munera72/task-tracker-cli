@@ -17,3 +17,17 @@ var taskName = map[TaskState]string{
 func (ts TaskState) String() string {
 	return taskName[ts]
 }
+
+func GetStatus(name string) (status TaskState) {
+
+	switch name {
+	case "todo":
+		status = Todo
+	case "in-progress":
+		status = InProgress
+	case "done":
+		status = Done
+	}
+
+	return
+}

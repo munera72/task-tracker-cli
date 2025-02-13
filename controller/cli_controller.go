@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"strconv"
 	"task-tracker-cli/enums"
+	"task-tracker-cli/service"
 )
 
 func ProcessArgs(args []string) {
@@ -52,7 +53,7 @@ func ProcessArgs(args []string) {
 }
 
 func addTask(desc string) {
-	fmt.Print("consuming service to add a task: " + desc)
+	service.AddTask(desc)
 }
 
 func listTasks(status string) {
@@ -60,14 +61,13 @@ func listTasks(status string) {
 }
 
 func deleteTask(id int) {
-	fmt.Print("deleting task: " + string(id))
+	service.DeleteTask(id)
 }
 
 func updateTask(id int, desc string) {
-	fmt.Print("Updating task " + string(id) + " with " + desc)
+	service.UpdateTaskDescription(id, desc)
 }
 
 func updateStatus(id int, status enums.TaskState) {
-	fmt.Print("Changing status of task " + string(id) + " to " + status.String())
-
+	service.UpdateTaskStatus(id, status)
 }
