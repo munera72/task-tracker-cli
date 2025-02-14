@@ -8,6 +8,7 @@ import (
 
 func main() {
 	persistence.SetUpPersistence()
+	defer persistence.ClosePersistence()
 	if len(os.Args) >= 2 {
 		controller.ProcessArgs(os.Args)
 	} else {

@@ -48,6 +48,8 @@ func ProcessArgs(args []string) {
 			argument, _ := strconv.Atoi(args[2])
 			updateStatus(argument, enums.Done)
 		}
+	default:
+		panic("Not a valid operation")
 	}
 }
 

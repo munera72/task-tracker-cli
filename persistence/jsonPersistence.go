@@ -2,8 +2,9 @@ package persistence
 
 import (
 	"encoding/json"
-	"errors"
+	"fmt"
 	"os"
+	"task-tracker-cli/structs"
 )
 
 var fileName string = "tasks.json"
@@ -11,25 +12,32 @@ var file *os.File
 var encoder *json.Encoder
 
 func SetUpPersistence() {
-	if _, err := os.Stat(fileName); errors.Is(err, os.ErrNotExist) {
-		createPersistenceFile()
-	}
-	createEncoder()
-}
-
-func createPersistenceFile() {
 	var err error
-	file, err = os.Create(fileName)
+	file, err = os.OpenFile("tasks.json", os.O_RDWR|os.O_CREATE, 0666)
+
 	if err != nil {
 		panic(err)
 	}
+
+	encoder = createEncoder()
 }
 
-func createEncoder() {
-	encoder = json.NewEncoder(file)
+// func createPersistenceFile() *os.File {
+// 	file, err := os.Create(fileName)
+// 	fmt.Print(file)
+// 	if err != nil {
+// 		panic(err)
+// 	}
+
+// 	return file
+// }
+
+func createEncoder() *json.Encoder {
+	return json.NewEncoder(file)
 }
 
-func WriteInPersistence(content any) {
+func WriteInPersistence(content structs.TaskList) {
+	fmt.Print(encoder)
 	if encoder == nil {
 		createEncoder()
 	}
@@ -46,4 +54,8 @@ func ReadPersistence() ([]byte, error) {
 
 func WipePersistenceContent() {
 	os.Truncate(fileName, 0)
+}
+
+func ClosePersistence() {
+	file.Close()
 }
