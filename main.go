@@ -2,8 +2,8 @@ package main
 
 import (
 	"os"
-	"task-tracker-cli/controller"
-	"task-tracker-cli/persistence"
+	"task-cli/controller"
+	"task-cli/persistence"
 )
 
 func main() {

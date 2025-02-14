@@ -2,8 +2,8 @@ package repo
 
 import (
 	"encoding/json"
-	"task-tracker-cli/persistence"
-	"task-tracker-cli/structs"
+	"task-cli/persistence"
+	"task-cli/structs"
 )
 
 func SaveTaskList(tl structs.TaskList) {

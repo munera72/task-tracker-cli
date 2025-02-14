@@ -1,9 +1,9 @@
 package service
 
 import (
-	"task-tracker-cli/enums"
-	"task-tracker-cli/repo"
-	"task-tracker-cli/structs"
+	"task-cli/enums"
+	"task-cli/repo"
+	"task-cli/structs"
 	"time"
 )
 

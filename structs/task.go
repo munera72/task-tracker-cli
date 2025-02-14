@@ -2,7 +2,7 @@ package structs
 
 import (
 	"fmt"
-	"task-tracker-cli/enums"
+	"task-cli/enums"
 	"time"
 )
 

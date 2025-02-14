@@ -3,7 +3,7 @@ package persistence
 import (
 	"encoding/json"
 	"os"
-	"task-tracker-cli/structs"
+	"task-cli/structs"
 )
 
 var fileName string = "tasks.json"

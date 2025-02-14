@@ -2,8 +2,8 @@ package controller
 
 import (
 	"strconv"
-	"task-tracker-cli/enums"
-	"task-tracker-cli/service"
+	"task-cli/enums"
+	"task-cli/service"
 )
 
 func ProcessArgs(args []string) {
