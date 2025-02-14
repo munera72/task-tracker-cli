@@ -7,15 +7,18 @@ import (
 )
 
 type TaskList struct {
-	Tasks []Task `json:"tasks"`
+	Tasks          []Task `json:"tasks"`
+	CurrentIdCount int    `json:"currentIdCount"`
 }
 
 func NewTaskList() *TaskList {
 	return &TaskList{}
 }
 
-func (tl *TaskList) AddTask(task Task) {
-	tl.Tasks = append(tl.Tasks, task)
+func (tl *TaskList) AddTask(description string, status enums.TaskState, createdAt time.Time) {
+	tl.CurrentIdCount++
+	tl.Tasks = append(tl.Tasks, *NewTask(tl.CurrentIdCount, description, status, createdAt))
+	fmt.Printf("Task added succesfully (ID: %v)", tl.CurrentIdCount)
 }
 
 func (tl *TaskList) FindTask(id int) (int, *Task) {

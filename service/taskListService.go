@@ -18,7 +18,7 @@ func ListTasks(status string) {
 }
 
 func AddTask(desc string) {
-	taskList.AddTask(*structs.NewTask(desc, enums.Todo, time.Now()))
+	taskList.AddTask(desc, enums.Todo, time.Now())
 	repo.SaveTaskList(taskList)
 }
 

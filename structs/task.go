@@ -6,8 +6,6 @@ import (
 	"time"
 )
 
-var currentIdCount int = 0
-
 type Task struct {
 	Id          int             `json:"id"`
 	Description string          `json:"description"`
@@ -16,10 +14,9 @@ type Task struct {
 	UpdatedAt   time.Time       `json:"updatedAt"`
 }
 
-func NewTask(description string, status enums.TaskState, createdAt time.Time) *Task {
-	currentIdCount++
+func NewTask(id int, description string, status enums.TaskState, createdAt time.Time) *Task {
 	return &Task{
-		Id:          currentIdCount,
+		Id:          id,
 		Description: description,
 		Status:      status,
 		CreatedAt:   createdAt,
@@ -46,6 +43,7 @@ func (t Task) String() string {
 	return fmt.Sprintf("id: %v\n"+
 		"desctiption: %s\n"+
 		"status: %s\n"+
-		"created at: %s\n\n\n",
-		t.Id, t.Description, t.Status.String(), t.CreatedAt)
+		"created at: %s\n"+
+		"updated at: %s\n\n",
+		t.Id, t.Description, t.Status.String(), t.CreatedAt, t.UpdatedAt)
 }
